@@ -5,7 +5,7 @@ This tutorial is a basic introduction to reference assembly commands for ONT dat
 
 ## Quality filtering and trimming
 
-The first step in porcessing ONT data is to trim low quality 
+The first step in processing ONT data is to trim low quality 
 reads and check the overall quality of the data.
 
 ```
@@ -35,8 +35,8 @@ you can use `minimap2` combined with `samtools` by piping one command into the n
 minimap2 -ax map-ont reference.fa runA.fastq | samtools view -bS -F 4 | samtools sort -o runAtoRef.bam
 ```
 
-You name the output BAM file to something more memorable for your project. By using the 
-command `-F 4` we are only keeping in the BAm file reads that map to the reference.
+You should name the output BAM file to something more memorable for your project. By using the 
+command `-F 4` we are only keeping in the BAM file reads that map to the reference.
 
 
 We can use `NanoStat` again to find out the stats of the reads that have mapped:
@@ -45,15 +45,15 @@ We can use `NanoStat` again to find out the stats of the reads that have mapped:
 NanoStat --bam runAtoRef.bam
 ```
 
-If mapping to a large genome like the human genome that we have stored on the server at 
-`/db/wgs/Human/ensembl99/bwa/Human.fa` you need to use an additional parameter:
+If mapping to a large genome like the human genome you need to use an additional parameter `split-prefix`. 
+We have the human genome already stored on the server at `/db/wgs/Human/ensembl99/bwa/Human.fa` 
 
 ```
 minimap2 -ax map-ont --split-prefix /tmp/runAtohuman /db/wgs/Human/ensembl99/bwa/Human.fa runA.fastq | samtools view -bS -F 4 | samtools sort -o runAtoHuman.bam
 ```
 
 It is then a good idea to download the BAM file and view it in Tablet to get a feel 
-for how the reads are spread across the genome etc...
+for how the reads are spread across the genome.
 
 ## Extracting specific reads
 
