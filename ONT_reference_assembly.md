@@ -1,7 +1,6 @@
 # Reference assembly using ONT Nanopore data
 
-This tutorial is aimed at beginners who have not dealt with ONT sequence 
-data before. 
+This tutorial is a basic introduction to reference assembly commands for ONT data. 
 
 
 ## Quality filtering and trimming
